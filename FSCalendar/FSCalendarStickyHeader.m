@@ -69,11 +69,12 @@
     CGFloat titleHeight = [@"1" sizeWithAttributes:@{NSFontAttributeName:self.calendar.appearance.headerTitleFont}].height*1.5 + weekdayMargin*3;
     
     _bottomBorder.frame = CGRectMake(0, _contentView.fs_height-weekdayHeight-weekdayMargin*2, _contentView.fs_width, 1.0);
+    
     UIEdgeInsets insets = self.calendar.appearance.headerTitleEdgeInsets;
     _titleLabel.frame = CGRectMake(insets.left,
-                                   _bottomBorder.fs_bottom - titleHeight - weekdayMargin - insets.top,
+                                   insets.top,
                                    titleWidth - insets.right - insets.left,
-                                   titleHeight - insets.bottom - insets.top);
+                                   _bottomBorder.fs_bottom - insets.bottom - insets.top);
     
 }
 
