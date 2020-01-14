@@ -34,6 +34,9 @@
         _subtitleFont = [UIFont systemFontOfSize:FSCalendarStandardSubtitleTextSize];
         _weekdayFont = [UIFont systemFontOfSize:FSCalendarStandardWeekdayTextSize];
         _headerTitleFont = [UIFont systemFontOfSize:FSCalendarStandardHeaderTextSize];
+        _headerTextAligment = NSTextAlignmentCenter;
+        _headerSeparatorColor = FSCalendarStandardLineColor;
+        _headerTitleEdgeInsets = UIEdgeInsetsZero;
         
         _headerTitleColor = FSCalendarStandardTitleTextColor;
         _headerDateFormat = @"MMMM yyyy";
@@ -107,6 +110,31 @@
 {
     if (![_headerTitleFont isEqual:headerTitleFont]) {
         _headerTitleFont = headerTitleFont;
+        [self.calendar configureAppearance];
+    }
+}
+
+- (void)setHeaderTextAligment:(NSTextAlignment)headerTextAligment
+{
+    if (_headerTextAligment != headerTextAligment) {
+        _headerTextAligment = headerTextAligment;
+        [self.calendar configureAppearance];
+    }
+}
+
+- (void)setHeaderSeparatorColor:(UIColor *)headerSeparatorColor
+{
+    if (![_headerSeparatorColor isEqual:headerSeparatorColor]) {
+        _headerSeparatorColor = headerSeparatorColor;
+        [self.calendar configureAppearance];
+    }
+}
+
+- (void)setHeaderTitleEdgeInsets:(UIEdgeInsets)headerTitleEdgeInsets
+{
+    BOOL isEqual = UIEdgeInsetsEqualToEdgeInsets(_headerTitleEdgeInsets, headerTitleEdgeInsets);
+    if (!isEqual) {
+        _headerTitleEdgeInsets = headerTitleEdgeInsets;
         [self.calendar configureAppearance];
     }
 }

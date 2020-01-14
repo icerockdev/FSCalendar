@@ -64,6 +64,21 @@ typedef NS_OPTIONS(NSUInteger, FSCalendarCaseOptions) {
 @property (strong, nonatomic) UIFont   *headerTitleFont;
 
 /**
+ * Separator color of the header.
+ */
+@property (assign, nonatomic) NSTextAlignment headerTextAligment;
+
+/**
+ * The font of the month text.
+ */
+@property (strong, nonatomic) UIColor   *headerSeparatorColor;
+
+/**
+ * Content insets for header label.
+ */
+@property (assign, nonatomic) UIEdgeInsets  headerTitleEdgeInsets;
+
+/**
  * The offset of the day text from default position.
  */
 @property (assign, nonatomic) CGPoint  titleOffset;
