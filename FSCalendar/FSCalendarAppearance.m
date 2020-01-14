@@ -35,6 +35,7 @@
         _weekdayFont = [UIFont systemFontOfSize:FSCalendarStandardWeekdayTextSize];
         _headerTitleFont = [UIFont systemFontOfSize:FSCalendarStandardHeaderTextSize];
         _headerTextAligment = NSTextAlignmentCenter;
+        _headerSeparatorColor = FSCalendarStandardLineColor;
         
         _headerTitleColor = FSCalendarStandardTitleTextColor;
         _headerDateFormat = @"MMMM yyyy";
@@ -116,6 +117,14 @@
 {
     if (_headerTextAligment != headerTextAligment) {
         _headerTextAligment = headerTextAligment;
+        [self.calendar configureAppearance];
+    }
+}
+
+- (void)setHeaderSeparatorColor:(UIColor *)headerSeparatorColor
+{
+    if (![_headerSeparatorColor isEqual:headerSeparatorColor]) {
+        _headerSeparatorColor = headerSeparatorColor;
         [self.calendar configureAppearance];
     }
 }
