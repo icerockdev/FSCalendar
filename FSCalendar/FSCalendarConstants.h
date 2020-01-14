@@ -50,7 +50,7 @@ CG_EXTERN CGSize const CGSizeAutomatic;
 #define FSCalendarStandardEventDotColor    FSColorRGBA(31,119,219,0.75)
 
 #define FSCalendarStandardLineColor        [[UIColor lightGrayColor] colorWithAlphaComponent:0.30]
-#define FSCalendarStandardSeparatorColor   [[UIColor lightGrayColor] colorWithAlphaComponent:0.60]
+#define FSCalendarStandardSeparatorColor   [UIColor clearColor]
 
 #define FSColorRGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 #define FSCalendarInAppExtension [[[NSBundle mainBundle] bundlePath] hasSuffix:@".appex"]
