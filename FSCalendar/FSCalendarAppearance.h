@@ -74,6 +74,11 @@ typedef NS_OPTIONS(NSUInteger, FSCalendarCaseOptions) {
 @property (strong, nonatomic) UIColor   *headerSeparatorColor;
 
 /**
+ * Content insets for header label.
+ */
+@property (assign, nonatomic) UIEdgeInsets  headerTitleEdgeInsets;
+
+/**
  * The offset of the day text from default position.
  */
 @property (assign, nonatomic) CGPoint  titleOffset;
