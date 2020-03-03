@@ -276,7 +276,7 @@
 
 #pragma mark - Properties
 
-- (BOOL)isFullSizeSelection {
+- (BOOL)isFullCellSizeLabel {
     return _appearance.isFullCellSizeLabel;
 }
 
