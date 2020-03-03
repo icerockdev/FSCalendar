@@ -15,6 +15,8 @@
 @interface FSCalendarCell ()
 
 @property (readonly, nonatomic) UIColor *colorForCellFill;
+@property (readonly, nonatomic) BOOL isFullCellSizeLabel;
+@property (readonly, nonatomic) BOOL isFullCellSizeSelection;
 @property (readonly, nonatomic) UIColor *colorForTitleLabel;
 @property (readonly, nonatomic) UIColor *colorForSubtitleLabel;
 @property (readonly, nonatomic) UIColor *colorForCellBorder;
@@ -46,7 +48,8 @@
 }
 
 - (void)commonInit
-{   
+{
+    
     UILabel *label;
     CAShapeLayer *shapeLayer;
     UIImageView *imageView;
@@ -124,7 +127,7 @@
                                        self.preferredTitleOffset.x,
                                        self.preferredTitleOffset.y,
                                        self.contentView.fs_width,
-                                       floor(self.contentView.fs_height*5.0/6.0)
+                                       self.isFullCellSizeLabel ? self.contentView.fs_height : floor(self.contentView.fs_height*5.0/6.0)
                                        );
     }
     
@@ -133,10 +136,15 @@
     CGFloat titleHeight = self.bounds.size.height*5.0/6.0;
     CGFloat diameter = MIN(self.bounds.size.height*5.0/6.0,self.bounds.size.width);
     diameter = diameter > FSCalendarStandardCellDiameter ? (diameter - (diameter-FSCalendarStandardCellDiameter)*0.5) : diameter;
-    _shapeLayer.frame = CGRectMake((self.bounds.size.width-diameter)/2,
-                                   (titleHeight-diameter)/2,
-                                   diameter,
-                                   diameter);
+    if (self.isFullCellSizeSelection) {
+        _shapeLayer.frame = _titleLabel.bounds;
+    } else {
+        _shapeLayer.frame = CGRectMake((self.bounds.size.width-diameter)/2,
+                                       (titleHeight-diameter)/2,
+                                       diameter,
+                                       diameter);
+    }
+    
     
     CGPathRef path = [UIBezierPath bezierPathWithRoundedRect:_shapeLayer.bounds
                                                 cornerRadius:CGRectGetWidth(_shapeLayer.bounds)*0.5*self.borderRadius].CGPath;
@@ -273,6 +281,14 @@
 }
 
 #pragma mark - Properties
+
+- (BOOL)isFullCellSizeLabel {
+    return _appearance.isFullCellSizeLabel;
+}
+
+- (BOOL)isFullCellSizeSelection {
+    return _appearance.isFullCellSizeSelection;
+}
 
 - (UIColor *)colorForCellFill
 {
