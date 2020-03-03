@@ -15,6 +15,7 @@
 @interface FSCalendarCell ()
 
 @property (readonly, nonatomic) UIColor *colorForCellFill;
+@property (readonly, nonatomic) BOOL isFullSizeSelection;
 @property (readonly, nonatomic) UIColor *colorForTitleLabel;
 @property (readonly, nonatomic) UIColor *colorForSubtitleLabel;
 @property (readonly, nonatomic) UIColor *colorForCellBorder;
@@ -46,7 +47,8 @@
 }
 
 - (void)commonInit
-{   
+{
+    
     UILabel *label;
     CAShapeLayer *shapeLayer;
     UIImageView *imageView;
@@ -119,6 +121,13 @@
                                           self.contentView.fs_width,
                                           subtitleHeight
                                           );
+    } else if (_isFullSizeSelection) {
+        _titleLabel.frame = CGRectMake(
+                                       self.preferredTitleOffset.x,
+                                       self.preferredTitleOffset.y,
+                                       self.contentView.fs_width,
+                                       self.contentView.fs_height
+                                       );
     } else {
         _titleLabel.frame = CGRectMake(
                                        self.preferredTitleOffset.x,
@@ -273,6 +282,10 @@
 }
 
 #pragma mark - Properties
+
+- (BOOL)isFullSizeSelection {
+    return _appearance.isFullCellSizeLabel
+}
 
 - (UIColor *)colorForCellFill
 {

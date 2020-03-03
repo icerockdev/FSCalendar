@@ -446,6 +446,13 @@
     }
 }
 
+- (void)setIsFullCellSizeLabel:(BOOL)isFullCellSizeLabel {
+    if (_isFullCellSizeLabel != isFullCellSizeLabel) {
+        _isFullCellSizeLabel = isFullCellSizeLabel;
+        [self.calendar configureAppearance];
+    }
+}
+
 - (void)setCaseOptions:(FSCalendarCaseOptions)caseOptions
 {
     if (_caseOptions != caseOptions) {

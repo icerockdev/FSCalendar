@@ -129,6 +129,11 @@ typedef NS_OPTIONS(NSUInteger, FSCalendarCaseOptions) {
 @property (assign, nonatomic) CGFloat  headerMinimumDissolvedAlpha;
 
 /**
+ * Property to show label and selection on full cell size
+ */
+@property (assign, nonatomic) BOOL isFullCellSizeLabel;
+
+/**
  * The day text color for unselected state.
  */
 @property (strong, nonatomic) UIColor  *titleDefaultColor;
